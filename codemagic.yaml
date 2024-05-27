@@ -4,17 +4,18 @@ workflows:
     max_build_duration: 60
     environment:
       xcode: latest
+      cocoapods: default
     scripts:
       - name: Set up project directory
         script: cd app-ios/ios
       - name: Install dependencies
         script: pod install
       - name: Build the app
-        script: xcodebuild -workspace MyApp.xcworkspace -scheme MyApp -sdk iphoneos -configuration Release archive -archivePath $HOME/build/MyApp.xcarchive
+        script: xcodebuild -workspace MFI-Controller.xcworkspace -scheme MFI-Controller -sdk iphoneos -configuration Release archive -archivePath $HOME/build/MFI-Controller.xcarchive
     artifacts:
-      - build/MyApp.xcarchive
+      - build/MFI-Controller.xcarchive
     publishing:
       scripts:
         - name: Publish to App Store
           script: |
-            xcrun altool --upload-app --type ios -f $HOME/build/MyApp.xcarchive -u $APP_STORE_CONNECT_API_KEY -p $APP_STORE_CONNECT_API_KEY_PASSWORD
+            xcrun altool --upload-app --type ios -f $HOME/build/MFI-Controller.xcarchive -u $APP_STORE_CONNECT_API_KEY -p $APP_STORE_CONNECT_API_KEY_PASSWORD
