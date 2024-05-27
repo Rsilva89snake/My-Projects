@@ -1,0 +1,21 @@
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    max_build_duration: 60
+    environment:
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Set up project directory
+        script: cd app-ios/ios
+      - name: Install dependencies
+        script: pod install
+      - name: Build the app
+        script: xcodebuild -workspace MyApp.xcworkspace -scheme MyApp -sdk iphoneos -configuration Release archive -archivePath $HOME/build/MyApp.xcarchive
+    artifacts:
+      - build/MyApp.xcarchive
+    distribution:
+      app_store:
+        api_key: $APP_STORE_CONNECT_API_KEY
+        api_issuer_id: $APP_STORE_CONNECT_API_ISSUER_ID
+        app_id: $APP_STORE_CONNECT_APP_ID
