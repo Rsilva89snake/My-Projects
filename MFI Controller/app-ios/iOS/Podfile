@@ -1,0 +1,7 @@
+platform :ios, '13.0'
+use_frameworks!
+
+target 'MFI-Controller' do
+  # Pod dependencies here
+  pod 'Alamofire', '~> 5.4'
+end
