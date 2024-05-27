@@ -5,7 +5,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         let label = UILabel(frame: CGRect(x: 50, y: 50, width: 200, height: 50))
-        label.text = "Hello, Codemagic!"
+        label.text = "Hello, MFI Controller!"
         view.addSubview(label)
     }
 }
